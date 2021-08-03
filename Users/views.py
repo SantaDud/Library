@@ -21,32 +21,32 @@ def signup(request):
     return render(request, 'Users/signup.html', {'form': form })
 
 def favorites(request, user_name):
-    print(user_name)
     user = m_User.objects.get(username=user_name)
+    print(user.pk)
     books = user.favorites.all()
     return render(request, 'Users/favorites.html', {'books': books})
 
 def addToFav(request, user_name, book_id):
     user = m_User.objects.get(username = user_name)
-    user_books = user.favorites.all()
+    #user_books = user.favorites.all()
     book = m_Book.objects.get(pk = book_id)
-    if book in user_books:
+    """if book in user_books:
         messages.warning(request, f'{book.title} is already in your favorites.')
-    else:
-        user.favorites.add(book)
-        messages.success(request, f'{book.title} was added to your favorites successfully.')    
-    return redirect('book', book_id)
+    else:"""
+    user.favorites.add(book)
+    messages.success(request, f'{book.title} was added to your favorites successfully.')    
+    return redirect('book', book_id, user.pk)
 
 def remFromFav(request, user_name, book_id):
     user = m_User.objects.get(username = user_name)
-    user_books = user.favorites.all()
+    #user_books = user.favorites.all()
     book = m_Book.objects.get(pk = book_id)
-    if book in user_books:
-        user.favorites.remove(book)
-        messages.success(request, f'{book.title} was removed from your favorites successfully.')
-    else:
-        messages.warning(request, f'{book.title} is not in your favorites.')
-    return redirect('book', book_id)
+    #if book in user_books:
+    user.favorites.remove(book)
+    messages.success(request, f'{book.title} was removed from your favorites successfully.')
+    """else:
+        messages.warning(request, f'{book.title} is not in your favorites.')"""
+    return redirect('book', book_id, user.pk)
 
 def issuedBooks(request, user_name):
     user = m_User.objects.get(username=user_name)
@@ -61,18 +61,18 @@ def addToIssued(request, user_name, book_id):
             messages.warning(request, f'This book is already issued to you.')
         else:
             messages.warning(request, f'{book.title} is already issued to another person.')
-        return redirect('book', book_id)
+        return redirect('book', book_id, user.pk)
     else:
         book.isIssued = True
         book.issuedTo = user
         book.save()
         messages.success(request, f'You can get the book "{book.title}" from counter no. {randint(1, 5)}')
-        return redirect('book', book_id)
+        return redirect('book', book_id, user.pk)
 
 def remFromIssued(request, user_name, book_id):
     book = m_Book.objects.get(pk = book_id)
+    user = m_User.objects.get(username = user_name)
     if book.isIssued:
-        user = m_User.objects.get(username = user_name)
         if book.issuedTo == user:        
             issueDate_m = book.dateIssued.month
             issueDate_d = book.dateIssued.day - 14
@@ -93,14 +93,14 @@ def remFromIssued(request, user_name, book_id):
             book.save()
             if fine == 0:
                 messages.success(request, f'Book returned successfully.')
-                return redirect('book', book_id)
+                return redirect('issuedBooks', user.username)
             else:
                 user.fine = user.fine + fine
                 user.save()
                 messages.warning(request, f'You returned the book {fineMultiple} days late. {fine} added to current fine amount.')
-                return redirect('book', book_id)
+                return redirect('book', book_id, user.pk)
         else:
             messages.warning(request, f'{book.title} is already issued to another person.')
     else:
         messages.info(request, f'This book is not issued by anyone currently.')
-        return redirect('book', book_id)
+        return redirect('book', book_id, user.pk)

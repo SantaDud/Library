@@ -6,17 +6,18 @@
     {% if books %}
         <h1 class="border-bottom" style="text-align: center;">Favorites</h1>
         <div class="booksContainer">
+        {% if user.is_authenticated %}
             {% for book in books %}
-
-                <a href="{% url 'book' book.id %}" class="searchBooks">
-                    <img src=/{{book.cover}} class="searchCovers">
-                    <span class='searchTitles'>{{book.title}}</span> 
-                </a>
-
+            
+            <a href="{% url 'book' book.id user.pk %}" class="searchBooks">
+                <img src=/{{book.cover}} class="searchCovers">
+                <span class='searchTitles'>{{book.title}}</span> 
+            </a>
+            
             {% endfor %}
+        {% endif %}
         </div>
         {% else %}
-
             <h1 class="border-bottom border-top s-spc">No Favorites Found.</h1>
 
     {% endif %}

@@ -2,19 +2,30 @@
 {% block body %}
 
 {% if books %}
-<div class="booksContainer">
-{% for book in books %}
-
-<a href="{% url 'book' book.id %}" class="searchBooks">
-    <img src={{book.cover}} class="searchCovers">
-    <span class='searchTitles'>{{book.title}}</span> 
-</a>
-
-{% endfor %}
-</div>
+    <div class="booksContainer">
+    {% if user.is_authenticated %}
+        {% for book in books %}
+            
+            <a href="{% url 'book' book.id user.pk %}" class="searchBooks">
+                <img src=/{{book.cover}} class="searchCovers">
+                <span class='searchTitles'>{{book.title}}</span> 
+            </a>
+        
+        {% endfor %}
+    {% else %}
+        {% for book in books %}
+        
+            <a href="{% url 'book' book.id 0 %}" class="searchBooks">
+                <img src=/{{book.cover}} class="searchCovers">
+                <span class='searchTitles'>{{book.title}}</span> 
+            </a>
+        
+        {% endfor %}
+    {% endif %}
+    </div>
 {% else %}
 
-<h1 class="border-bottom border-top s-spc">No search results.</h1>
+    <h1 class="border-bottom border-top s-spc">No search results.</h1>
 
 {% endif %}
 {% endblock %}

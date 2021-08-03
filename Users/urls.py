@@ -11,5 +11,5 @@ urlpatterns =[
     path('<str:user_name>/<int:book_id>/removed', views.remFromFav, name='remFromFav'),
     path("<str:user_name>/issued", views.issuedBooks, name='issuedBooks'),
     path("<int:book_id>/<str:user_name>/added", views.addToIssued, name='addToIssued'),
-    path('<str:user_name><int:book_id>', views.remFromIssued, name='remFromIssued'),
+    path('<str:user_name>/<int:book_id>', views.remFromIssued, name='remFromIssued'),
     ]

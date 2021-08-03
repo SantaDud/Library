@@ -4,7 +4,7 @@
 
 
 <link rel="stylesheet" href="{% static 'Books/css/book.css' %}">
-<img src={{book.cover}} class="bookCovers">
+<img src=/{{book.cover}} class="bookCovers">
 <div class="bookContent">
     <h1 class="Title">{{book.title}}</h1><br>
     <div class="author"><span>Author:</span><br>{{book.author}}</div><br>
@@ -15,21 +15,36 @@
     {% endif %}
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            <a class="nav-link d-btn" href="{{book.bookPDF}}" target="_blank">Open Book</a>
+            <a class="nav-link d-btn" href="/{{book.bookPDF}}" target="_blank">Open Book</a>
         </li>
         {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link d-btn" href="{% url 'addToFav' user.username book.id %}">Add to Favorites</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-btn" href="{% url 'remFromFav' user.username book.id %}">Remove From Favorites</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-btn" href="{% url 'addToIssued' book.id user.username %}">Get Book</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-btn" href="{% url 'remFromIssued' user.username book.id  %}">Return Book</a>
-            </li>
+            {% if book in user_favorites %}
+
+                <li class="nav-item">
+                    <a class="nav-link d-btn" href="{% url 'remFromFav' user.username book.id %}">Remove From Favorites</a>
+                </li>
+
+            {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link d-btn" href="{% url 'addToFav' user.username book.id %}">Add to Favorites</a>
+                </li>
+
+            {% endif %}
+            
+            {% if book in user_issued %}
+            
+                <li class="nav-item">
+                    <a class="nav-link d-btn" href="{% url 'remFromIssued' user.username book.id  %}">Return Book</a>
+                </li>
+                
+            {% else %}
+            
+                <li class="nav-item">
+                    <a class="nav-link d-btn" href="{% url 'addToIssued' book.id user.username %}">Get Book</a>
+                </li>
+                
+            {% endif %}
         {% endif %}
     </ul>
 </div>
