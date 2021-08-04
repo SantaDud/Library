@@ -6,6 +6,11 @@
     {% if user.is_authenticated %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if user.is_staff %}
+        <li class="nav-item">
+          <a class="nav-link btn-fav" aria-current="page" href="/admin">Admin Site</a>
+        </li>
+        {% else %}
         <li class="nav-item">
           <a class="nav-link active btn-fav" aria-current="page" href="{% url 'favorites' user.username %}">Favorites</a>
         </li>
@@ -15,6 +20,7 @@
         <li class="nav-item">
           <a class="nav-link disabled owed-text" href="#" tabindex="-1" aria-disabled="true">Amount Owed: Rs. {{user.fine}}</a>
         </li>
+        {% endif %}
       </ul>
     </div>
     {% endif %}

@@ -10,7 +10,7 @@
             {% for book in books %}
 
                 <a href="{% url 'book' book.id user.id %}" class="indexBooks">
-                    <img src={{book.cover}} class="indexCovers">
+                    <img src=/{{book.cover}} class="indexCovers">
                     <span class='indexTitles'><span>{{book.title}}</span></span> 
                 </a>
 
@@ -19,7 +19,7 @@
             {% for book in books %}
 
                 <a href="{% url 'book' book.id 0 %}" class="indexBooks">
-                    <img src={{book.cover}} class="indexCovers">
+                    <img src=/{{book.cover}} class="indexCovers">
                     <span class='indexTitles'><span>{{book.title}}</span></span> 
                 </a>
 

@@ -15,7 +15,7 @@ class Book(models.Model):
     ISBN = CharField(max_length=14)
     bookPDF = FileField(storage=fileStorage, upload_to='static/Books/')
     isIssued = BooleanField(default=False)
-    issuedTo = ForeignKey(to='Users.User', related_name="issuedBooks", on_delete=models.PROTECT, null=True)
+    issuedTo = ForeignKey(to='Users.User', related_name="issuedBooks", on_delete=models.PROTECT, null=True, blank=True)
     dateIssued = DateField(auto_now=True, null=True)
     dateReturned = DateField(auto_now=True, null=True)
 
