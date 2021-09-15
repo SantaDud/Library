@@ -1,0 +1,32 @@
+{% extends "Books/layout.html" %}
+{% block body %}
+
+{% if books %}
+    <h1 class="border-bottom mt-4" style="text-align: center;">Search Results</h1>
+    <div class="booksContainer mt-5 mb-5">
+    {% if user.is_authenticated %}
+        {% for book in books %}
+            <div class="book-instance">
+                <a href="{% url 'book' book.id user.pk %}" class="searchBooks">
+                    <img src=/{{book.cover}} class="searchCovers">
+                    <span class='searchTitles'>{{book.title}}</span> 
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% for book in books %}
+            <div class="book-instance">
+                <a href="{% url 'book' book.id 0 %}" class="searchBooks">
+                    <img src=/{{book.cover}} class="searchCovers">
+                    <span class='searchTitles'>{{book.title}}</span> 
+                </a>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+{% else %}
+    <h1 class="border-bottom mt-4" style="text-align: center;">Search Results</h1>
+    <h1 class="border-bottom border-top s-spc">No search results.</h1>
+
+{% endif %}
+{% endblock %}

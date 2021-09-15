@@ -1,0 +1,24 @@
+{% extends 'Books/layout.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block body %}
+
+<form class="d-flex" id="r-form" method="POST">
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4 mt-5">Registration</legend>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <p style="margin-top: 0.5rem;">The password should have a minimum of 8 characters and a maximum of 15 characters.</p>
+        <br>
+        <button class="btn btn-success" type="submit">Sign Up</button>
+        <div class="pt-4 mb-3">
+            <small>
+                Already Have An Account? <a class="nav-item" style="font-size: 0.95rem;" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+    </fieldset>
+</form>
+
+
+{% endblock %}

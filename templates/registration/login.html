@@ -1,0 +1,26 @@
+{% extends 'Books/layout.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block body %}
+
+<form class="d-flex" id="r-form" method="POST">
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4 mt-5">Login</legend>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <button class="btn btn-success" type="submit">Sign In</button>
+        <div class="pt-2" style="margin-bottom: 2.8em;">
+            <small>
+                Forgot Password? <a class="nav-item" style="font-size: 0.95rem;" href="{% url 'password_reset' %}">Reset password</a>
+            </small>
+            <br>
+            <small>
+                Need An Account? <a class="nav-item" style="font-size: 0.95rem;" href="{% url 'signup' %}">Sign Up</a>
+            </small>
+        </div>
+    </fieldset>
+</form>
+
+{% endblock %}

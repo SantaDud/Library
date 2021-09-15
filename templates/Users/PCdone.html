@@ -1,0 +1,11 @@
+{% extends 'Books/layout.html' %}
+
+{% block body %}
+<h1 class="border-bottom" style="margin: 1em 0 1em; padding-left: 0.7em;">Success!</h1>
+<div class="pt-2 margin-lb" style="margin-bottom: 20em">
+    <p>Your password was successfully changed.</p>
+    <small>
+        Return to homepage by clicking <a class="nav-item" style="font-size: 0.95rem;" href="{% url 'index' %}">here.</a>
+    </small>
+</div>
+{% endblock %}

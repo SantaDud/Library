@@ -1,0 +1,39 @@
+{%extends "Books/layout.html"%}
+{% load static %}
+{%block body%}
+
+{% if books %}
+
+    {% include 'Books/carousal.html' %}
+    <h1 class="border-bottom mt-3 mb-2" style="text-align: center;">Books</h1>
+    <div class="booksContainer">
+        {% if user.is_authenticated %}
+            {% for book in books %}
+                <div class="book-instance">
+                    <a href="{% url 'book' book.id user.id %}" class="indexBooks">
+                        <img src=/{{book.cover}} class="indexCovers">
+                        <span class='indexTitles'><span>{{book.title}}</span></span> 
+                    </a>
+                </div>
+                
+
+            {% endfor %}
+        {% else %}    
+            {% for book in books %}
+
+                <div class="book-instance">
+                    <a href="{% url 'book' book.id 0 %}" class="indexBooks">
+                        <img src=/{{book.cover}} class="indexCovers">
+                        <span class='indexTitles'><span>{{book.title}}</span></span> 
+                    </a>
+                </div>
+
+            {% endfor %}
+        {% endif %}
+    </div>
+{% else %}
+    <h1 class='border-bottom'>Books</h1>
+    <h1 class="border-bottom border-top s-spc">No Books Added In The Database.</h1>
+
+{% endif %}
+{%endblock%}
