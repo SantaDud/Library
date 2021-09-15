@@ -141,4 +141,4 @@ LOGIN_REDIRECT_URL = 'index'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-django_heroku.sttings(locals())
+django_heroku.settings(locals())
