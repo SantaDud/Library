@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
+/* Body Start */
+
 body,html{
     height: 100%;
-    margin: 1.2em 0 0 0;
     font-family: 'Nunito', sans-serif;
-    color:brown;
+    background-color: #fff;
 }
 
 .booksContainer{
@@ -13,74 +14,17 @@ body,html{
     flex-wrap: wrap;
 }
 
-/*Random*/
-.margin-lb{
-    margin-left: 2rem;
-    margin-bottom: 1rem;
-}
+/*Navbar Start*/
 
-.border-bottom{
-    border-color: brown !important;
-}
-
-.border-top{
-    border-color: brown !important;
-}
-
-.s-spc{
-    margin: 5.8rem;
-    padding: 5rem;
-}
-
-/*END Random*/
-
-/* Navbar CSS*/
-
-a[id='navLogo'] img{
-    width: 100px;
-    height: 80px;
-}
-
-.btn-fav{
-    margin-left: 2em;
-    font-size: 1.2rem !important;
-    text-decoration: none !important;
-    color: brown !important;
-    border: 2px solid brown;
-}
-
-.form-control, .form-control:enabled, .form-control:focus{
-    background-color: #d6bb92 !important;
-    color: rgb(136, 89, 28) !important;
-    border-color: burlywood !important;
-}
-
-input.form-control.me-2:-webkit-autofill {
-    transition: background-color 50000s ease-in-out 0s!important;
-}
-
-@media (max-width: 992px){
-    
-.navbar-expand .navbar-nav-sm .nav-link {
-    padding-right: .5rem;
-    padding-left: .5rem;
-}
-}
-
-/*Log In Btn*/
 .nav-item{
     text-align: center;
-    width:fit-content;
-    height: fit-content;
+    padding-top: 1rem;
     margin:0 1rem 0 0;
     font-size: 1rem;
-    color: brown;
 }
 
 .nav-link{
-    color:brown;
     padding:0;
-    text-decoration: underline;
 }
 
 .btn-ul{
@@ -92,44 +36,71 @@ a.nav-link.btn-fav {
 }
 
 .nav-link:hover, .nav-link:focus{
-    color:brown;
     font-weight:bolder;
 }
 
-.btn-success{
-    border-style: none;
-    background-color: brown;
-    color: rgb(2, 2, 1);
+a[id='navLogo'] img{
+    width: 100px;
+    height: 80px;
 }
 
-.btn-success:hover, .btn-success:focus{
-    background-color:rgb(112, 22, 22);
-    color:white;
-    cursor: pointer;
-}
-/*END of Login Btn*/
-
-/* END Navbar CSS*/
-
-
-/*Form Input Fields*/
-
-input.textinput.textInput.form-control:-webkit-autofill {
-    transition: background-color 5000000s ease-in-out 0s!important;
+.navbar {
+    padding: 0;
 }
 
-input.emailinput.form-control:-webkit-autofill {
-    transition: background-color 5000000s ease-in-out 0s!important;
+/*Carousal Start*/
+
+.carousalCovers{
+    margin: auto;
+    width: 450px;
+    height: 550px;
 }
 
-.helptext{
-    display: none;
+.carousel-control-next, .carousel-control-prev{
+    color: #000 !important;
+    background: #212529 0 ;
+    opacity: 1;
+    width: 35.25%;
 }
 
-/*END Form Input Fields*/
+/*Form Start*/
 
-/*Index Books*/
+.d-flex{
+    justify-content: center !important;
+}
+
+/*Spacing Start*/
+
+.margin-lb{
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.s-spc{
+    margin: 5.8rem;
+    padding: 5rem;
+}
+
+/*Index Books Start*/
+
+.book-instance{
+    background-color: #fff;
+    display: inline-block;
+    height: fit-content;
+    width: fit-content;
+    padding: 1rem;
+    margin: 2rem 1rem 2rem 1rem;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px grey,
+    -5px -5px 10px grey;
+}
+
+.booksContainer{
+    background-color: #fff;
+}
+
 .searchCovers, .indexCovers{
+    border-radius: 8px;
     width: 220px;
     height: 350px;
 }
@@ -138,19 +109,17 @@ a[class=indexBooks], a[class=searchBooks]{
     display: inline-block;
     width:220px;
     height:350px;
-    margin: 4em 1.5em 4em 1.5em;
 }
 
 span[class=indexTitles], span[class=searchTitles]{
     display: inline-block;
-    color:brown;
-    text-overflow: clip;
+    color:white;
     text-decoration: none;
     width: 220px;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
     padding: 0.2em;
     text-align: center;
-    background-color: rgba(246, 217, 172, 0.4);
+    background-color: green;
     margin-bottom: 1em;
     transform: translateY(0.5em);
 }
@@ -164,27 +133,25 @@ span[class=indexTitles]:hover, span[class=searchTitles]:hover{
     margin-left: 2rem;
 }
 
-.carousalCovers{
-    margin: auto;
-    width: 500px;
-    height: 700px;
-}
+/*Form Input Fields */
 
-/*END Index Books*/
+.helptext{
+    display: none;
+}
 
 /*Footer Start*/
 
 .footer-container{
     box-sizing: border-box;
-    padding: 1rem 0 1rem 0;
-    background-color:rgb(228, 191, 144);
+    padding: 1rem 0 0.8rem 0;
+    background-color:#212529;
 }
 
 footer{
     width: 80%;
     margin: 0 auto;
-    background-color: rgb(228, 191, 144);
-    color:chocolate;
+    background-color: #212529;
+    color: #fff;
     display:flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -197,20 +164,19 @@ footer{
 }
 
 .footer-heading h2{
-    color: brown;
     font-weight: bolder;
 }
 
 .footer-heading a{
+    color: #fff;
     text-align: center;
     text-decoration: none;
-    color: chocolate;
 }
 
 .footer-heading a:hover{
+    color: white;
     font-weight: bolder;
-    color:brown;
-    transition: 0.3s ease-out;
+    transition: 0.1s ease-in;
 }
 
 @media screen and (max-width: 660px){
@@ -227,21 +193,32 @@ footer{
         margin: 0 2rem 2rem 2rem; 
     }
 }
+
 @media screen and (max-width: 720px){
         form.d-flex.search {
             margin-bottom: 178px;
             margin-left: -200px;
     }
 }
+
 @media screen and (max-width: 552px){
         form.d-flex.search {
             margin-bottom: 178px;
             margin-left: -459px;
     }
 }
+
 @media screen and (max-width: 550px){
         .owed-text {
             margin-top: 51px;
             margin-left: -263px;
     }
 }
+
+@media (max-width: 992px){
+    
+    .navbar-expand .navbar-nav-sm .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem;
+    }
+    }

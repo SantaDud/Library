@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Book as m_Book
 from Users.models import User as m_User
 from random import randint
-# Create your views here.
+
 
 def index(request):
     numberOfBooks = m_Book.objects.count()
