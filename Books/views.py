@@ -6,19 +6,22 @@ from random import randint
 
 def index(request):
     numberOfBooks = m_Book.objects.count()
-    first = m_Book.objects.first().pk
-    bookIds = []
-    for i in range(3):
-        temp = randint(first, numberOfBooks + first - 1)
-        while(temp in bookIds):
+    if (numberOfBooks):
+        first = m_Book.objects.first().pk
+        bookIds = []
+        for i in range(3):
             temp = randint(first, numberOfBooks + first - 1)
-        bookIds.append(temp)
-    return render(request, 'Books/index.html', {
-        "books": m_Book.objects.all(),
-        "rBook1": m_Book.objects.get(pk = int(bookIds[1])),
-        "rBook2": m_Book.objects.get(pk = int(bookIds[0])),
-        "rBook3": m_Book.objects.get(pk = int(bookIds[2])),
-    })
+            while(temp in bookIds):
+                temp = randint(first, numberOfBooks + first - 1)
+            bookIds.append(temp)
+        return render(request, 'Books/index.html', {
+            "books": m_Book.objects.all(),
+            "rBook1": m_Book.objects.get(pk = int(bookIds[1])),
+            "rBook2": m_Book.objects.get(pk = int(bookIds[0])),
+            "rBook3": m_Book.objects.get(pk = int(bookIds[2])),
+        })
+    else:
+        return render(request, "Books/index.html")
 
 def book(request, book_id, user_id):
     if user_id == 0:
