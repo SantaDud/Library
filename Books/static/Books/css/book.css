@@ -1,7 +1,10 @@
 .bookCovers{
     width: 350px;
     height: 500px;
-    margin: 2em 0 1.5em 3em;
+    margin: -31rem 3rem 1.5rem 3rem;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px grey,
+    -2px -2px 5px grey;
 }
 
 div[class=bookContent]{
@@ -9,7 +12,12 @@ div[class=bookContent]{
     padding: 0.5em 1em 0.5em 1.2em;
     background-color: #fff;
     border-radius: 0.5em;
-    transform: translate(30em, -33em);
+    display: inline-block;
+    height: fit-content;
+    margin: 7rem 1rem 7rem 1rem;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px grey,
+    -2px -2px 5px grey;
 }
 
 div[class=bookContent] span{
@@ -18,8 +26,8 @@ div[class=bookContent] span{
 }
 
 .d-btn{
+    width: fit-content;
     border: 1px solid black;
     text-decoration: none;
     padding: 0.5rem 1rem 0.5rem 1rem !important;
-    margin-bottom: 2rem;
 }

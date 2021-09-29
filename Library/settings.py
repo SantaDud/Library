@@ -142,3 +142,15 @@ LOGIN_REDIRECT_URL = 'index'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+
+EMAIL_HOST_USER = 'apikey'
+
+EMAIL_HOST_PASSWORD = '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'
+
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
